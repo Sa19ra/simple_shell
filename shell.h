@@ -38,3 +38,16 @@ void ffree(char **);
 void *_realloc(void *, unsigned int, unsigned int);
 int bfree(void **);
 
+/* path.c */
+int is_cmd(info_t *, char *);
+char *dup_chars(char *, int, int);
+char *find_path(info_t *, char *, char *);
+
+/* exit_emulators.c */
+int _myexit(info_t *);
+int _mycd(info_t *);
+int _myhelp(info_t *);
+int _myhistory(info_t *);
+
+/* alias_builtin.c */
+int _myalias(info_t *);
