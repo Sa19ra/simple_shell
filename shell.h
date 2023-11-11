@@ -50,4 +50,26 @@ int _myhelp(info_t *);
 int _myhistory(info_t *);
 
 /* alias_builtin.c */
+int unset_alias(info_t *, char *);
+int set_alias(info_t *, char *);
+int print_alias(list_t *);
 int _myalias(info_t *);
+
+/* getline_function */
+ssize_t input_buf(info_t *, char **, size_t *);
+ssize_t get_input(info_t *);
+ssize_t read_buf(info_t *, char *, size_t *);
+int _getline(info_t *, char **, size_t *);
+void sigintHandler(int);
+
+/* env_builtin.c */
+char *_getenv(info_t *, const char *);
+int _myenv(info_t *);
+int _mysetenv(info_t *);
+int _myunsetenv(info_t *);
+int populate_env_list(info_t *);
+
+/* updatenv_builtin.c */
+char **get_environ(info_t *);
+int _unsetenv(info_t *, char *);
+int _setenv(info_t *, char *, char *);
