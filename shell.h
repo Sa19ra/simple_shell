@@ -13,6 +13,18 @@ typedef struct builtin
 	int (*func)(info_t *);
 } builtin_table;
 
+/* first_shell.c */
+int hsh(info_t *, char **);
+int find_builtin(info_t *);
+void find_cmd(info_t *);
+void fork_cmd(info_t *);
+
+/* err_functions.c */
+void _eputs(char *);
+int _eputchar(char);
+int _putfd(char c, int fd);
+int _putsfd(char *str, int fd);
+
 /* string_functions.c */
 int _strlen(char *);
 int _strcmp(char *, char *);
