@@ -36,17 +36,19 @@
 
 extern char **environ;
 
+
 /**
- *struct builtin - Structure holding a command flag
- *                 and its corresponding function
- *@type: A string representing the built-in command flag
- *@func: Pointer to the function associated with the specified command
+ * struct liststr - singly linked list
+ * @num: the number field
+ * @str: a string
+ * @next: points to the next node
  */
-typedef struct builtin
+typedef struct liststr
 {
-	char *type;
-	int (*func)(info_t *);
-} builtin_table;
+	int num;
+	char *str;
+	struct liststr *next;
+} list_t;
 
 /**
  *struct passinfo - contains pseudo-arguements to pass into a function,
@@ -108,12 +110,12 @@ typedef struct builtin
 	int (*func)(info_t *);
 } builtin_table;
 
-/* first_shell.c */
+
+/* hsh.c */
 int hsh(info_t *, char **);
 int find_builtin(info_t *);
 void find_cmd(info_t *);
 void fork_cmd(info_t *);
-
 
 /* path.c */
 int is_cmd(info_t *, char *);
@@ -148,7 +150,7 @@ char *_strchr(char *, char);
 char **strtow(char *, char *);
 char **strtow2(char *, char);
 
-/* storage_functions */
+/* storage_functions.c */
 char *_memset(char *, char, unsigned int);
 void ffree(char **);
 void *_realloc(void *, unsigned int, unsigned int);
@@ -167,41 +169,36 @@ int print_d(int, int);
 char *convert_number(long int, int, int);
 void remove_comments(char *);
 
-/* exit_emulators.c */
+/* exit_builtin.c */
 int _myexit(info_t *);
 int _mycd(info_t *);
 int _myhelp(info_t *);
-int _myhistory(info_t *);
 
 /* alias_builtin.c */
-int unset_alias(info_t *, char *);
-int set_alias(info_t *, char *);
-int print_alias(list_t *);
+int _myhistory(info_t *);
 int _myalias(info_t *);
 
-/* getline_function */
-ssize_t input_buf(info_t *, char **, size_t *);
+/* getline_functions.c module */
 ssize_t get_input(info_t *);
-ssize_t read_buf(info_t *, char *, size_t *);
 int _getline(info_t *, char **, size_t *);
 void sigintHandler(int);
 
-/* env_builtin.c */
+/* information.c module */
+void clear_info(info_t *);
+void set_info(info_t *, char **);
+void free_info(info_t *, int);
+
+/* env_builtin.c module */
 char *_getenv(info_t *, const char *);
 int _myenv(info_t *);
 int _mysetenv(info_t *);
 int _myunsetenv(info_t *);
 int populate_env_list(info_t *);
 
-/* updatenv_builtin.c */
+/* updatenv_builtin.c module */
 char **get_environ(info_t *);
 int _unsetenv(info_t *, char *);
 int _setenv(info_t *, char *, char *);
-
-/* information.c module */
-void clear_info(info_t *);
-void set_info(info_t *, char **);
-void free_info(info_t *, int);
 
 /* file_functions.c */
 char *get_history_file(info_t *info);

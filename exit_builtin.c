@@ -96,16 +96,6 @@ int _myhelp(info_t *info)
 	return (0);
 }
 
-/**
- * _myhistory - Display the command history with line numbers
- * @info: Structure holding potential arguments,
- *        ensuring a consistent function prototype.
- * Return: Always returns 0.
- */
-int _myhistory(info_t *info)
-{
-	print_list(info->history);
-	return (0);
-}
+
 
 

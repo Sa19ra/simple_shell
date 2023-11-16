@@ -1,6 +1,18 @@
 #include "shell.h"
 
 /**
+ * _myhistory - Display the command history with line numbers
+ * @info: Structure holding potential arguments,
+ *        ensuring a consistent function prototype.
+ * Return: Always returns 0.
+ */
+int _myhistory(info_t *info)
+{
+	print_list(info->history);
+	return (0);
+}
+
+/**
  * unset_alias - Set an alias to a string
  * @info: Parameter struct holding relevant information
  * @str: The string representing the alias
